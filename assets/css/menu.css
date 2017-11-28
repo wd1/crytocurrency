@@ -12,7 +12,7 @@ File: Menu
   z-index: 999;
 }
 .topbar .topbar-left {
-  background: #ffffff;
+  background: #2f3e47;
   float: left;
   text-align: center;
   height: 70px;
@@ -184,7 +184,7 @@ File: Menu
   top: 70px;
   width: 250px;
   z-index: 10;
-  background: #ffffff;
+  background: #2f3e47;
   bottom: 50px;
   height: 100%;
   margin-bottom: -70px;
@@ -623,7 +623,8 @@ File: Menu
   background: rgba(152, 166, 173, 0.3);
   box-shadow: none;
   border-radius: 30px;
-  width: 190px;
+  width: 280px;
+  height: 42px;
 }
 input.app-search-input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.7);
