@@ -162,7 +162,7 @@
     "labelsEnabled": false
   },
   "export": {
-    "enabled": true
+    "enabled": false
   }
 });
 
