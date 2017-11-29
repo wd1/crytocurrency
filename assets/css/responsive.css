@@ -14,6 +14,9 @@ File: Responsive
   .button-menu-mobile {
     display: block !important;
   }
+  .search_form {
+    display: none;
+  }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   body {
@@ -47,7 +50,7 @@ File: Responsive
     height: 75px;
   }
   .navbar-default {
-    background-color: #ffffff;
+    background-color: #253138;
     box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
   }
   .notification-box ul li a,
@@ -212,7 +215,7 @@ File: Responsive
     padding: 0px 5px;
   }
   .topbar-left {
-    display: none;
+    /* display: none; */
   }
   .editable-responsive {
     overflow-x: auto;

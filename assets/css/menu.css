@@ -180,6 +180,10 @@ File: Menu
     opacity: 0.0;
   }
 }
+.topbar_responsive {
+  background: #2f3e47;
+  margin-left: 250px;
+}
 .side-menu {
   top: 70px;
   width: 250px;
@@ -343,6 +347,11 @@ File: Menu
   pointer-events: none;
   cursor: default;
   font-size: 13px;
+}
+
+
+#wrapper.enlarged .topbar_responsive {
+  margin-left: 70px;
 }
 #wrapper.enlarged .menu-title,
 #wrapper.enlarged .menu-arrow {

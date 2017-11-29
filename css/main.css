@@ -197,6 +197,26 @@ ul.checkout-bar a {
     z-index: 99;
   }
 }
+@media (max-width: 1153px) and (min-width: 800px) {
+  ul.checkout-bar {
+    /* width: 32%; */
+  }
+  ul.checkout-bar li:nth-child(3) {
+    width:32%;
+  }
+}
+@media (max-width: 800px) {
+  .checkout-wrap {
+    display:none;
+  }
+}
+@media (max-width:550px) {
+  .forced #top_rightbar{
+    display: none;
+  }
+  .forced .topbar_parent{
+    background:#2f3e47;
+}
 /*
  * Copyright (c) 2012-2013 Thibaut Courouble
  * http://www.cssflow.com
