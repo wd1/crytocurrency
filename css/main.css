@@ -197,6 +197,9 @@ ul.checkout-bar a {
     z-index: 99;
   }
 }
+.select_exchange {
+  background:#475e6b;
+}
 @media (max-width: 1153px) and (min-width: 800px) {
   ul.checkout-bar {
     /* width: 32%; */
@@ -216,6 +219,7 @@ ul.checkout-bar a {
   }
   .forced .topbar_parent{
     background:#2f3e47;
+}
 }
 /*
  * Copyright (c) 2012-2013 Thibaut Courouble
