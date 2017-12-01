@@ -637,14 +637,15 @@ else{
     }
 
            $.ajax({
-      url:'https://stark-island-54204.herokuapp.com/cloud/api/beta/register.php'+oauthString,
+
+      url:'https://sheltered-plateau-23231.herokuapp.com/cloud/api/beta/register.php'+oauthString,
       data:{
         email:$('#signupEmail').val(),
         pw:$('#signupPw').val()
       },
       method:"POST",
       complete:function(transport){
-
+        console.log(transport.responseText);
         theResp = $.parseJSON(transport.responseText);
         if(theResp['status'] =='success'){
           $('#signupForm button').html('Please wait')

@@ -16,7 +16,7 @@ input{
 
 
 .lightboxes{
-    min-width:300px;
+    min-width:400px;
     border-radius:10px;
 }
 .lightboxes input{
@@ -170,12 +170,12 @@ ul.checkout-bar a {
     width: 33%;
   }
   ul.checkout-bar li:before {
-    height: 45px;
+    height: 35px;
     left: 40%;
     line-height: 45px;
     position: absolute;
-    top: -65px;
-    width: 45px;
+    top: -62px;
+    width: 35px;
     z-index: 99;
   }
   ul.checkout-bar li.visited {
