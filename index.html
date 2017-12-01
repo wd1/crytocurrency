@@ -78,7 +78,7 @@
                                     <p style="text-align:right;    padding-left: 20px;
                                     padding-right: 40px;
                                     margin-top: 18px;
-                                    margin-left: 20px;"><span style="color:#57c272">aaaMock Portfolio: $25000</span><br><span style="color:#71b6f9">Market Portfolio: $30000</span></p>
+                                    margin-left: 20px;"><span style="color:#57c272">Mock Portfolio: $25000</span><br><span style="color:#71b6f9">Market Portfolio: $30000</span></p>
                                 </div>
                             </li>
                             <li>
@@ -99,6 +99,12 @@
                                                 <i class="zmdi zmdi-email"></i>
                                             </a>
                                             
+                                        </li>
+                                        <li style="margin-left: 20px;vertical-align: top;">
+                                            <a href="#signupForm" data-lity style="font-size:12px;opacity:.8;text-decoration:none; color:#fff"> Sign-up</a>
+                                        </li>
+                                        <li style="margin-left: 0px;vertical-align: top;">
+                                            <a href="#loginForm" data-lity style="font-size:12px;opacity:.8;text-decoration:none; color:#fff"> Login</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -298,58 +304,113 @@
 
 
 
-                <!-- <div id="naver" style="width:100%; height:38px; background-color:#000; padding:10px; font-size:12px; position:fixed; top:0px; left:0px; z-index:100; opacity:.8">
+                
+                
+                <div id="signupForm" style="height:auto; padding:50px; background-color:#253138; font-size:23px; text-align:center; color:white; " class="lity-hide lightboxes col-md-4">
 
-                <div id="signer" style="float:right">
-                 <a href="#signupForm" data-lity style="text-decoration:none; color:#fff"> Sign-up</a>
-                 | 
-                  <a href="#loginForm" data-lity style="text-decoration:none; color:#fff"> Login</a>
-                </div>
-
-                <div id="signer" style="float:right; margin-right:25px;">
-                  <span id="user">Guest Mock Portfolio:</span> <b ><span id="userBalance">$25,000</span></b>
-                </div>
-
-                <div id="signer2" style="float:left">
-
-                <b>x²</b>
-                </div>
-
-                </div>
-                 -->
-                <div id="signupForm" style="height:auto; padding:50px; background-color:black; font-size:12px; text-align:center; color:white; " class="lity-hide lightboxes">
-
-                  Sign-up
+                  Register
                     <br><br>
 
-                    <input type="text" id="signupEmail" placeholder="E-mail" style="border-width:0px">
+                    <input type="text" id="signupEmail" placeholder="E-mail" style="border-width: 0px;
+                    background: #475e6b !important;
+                    border: 1px solid #2f3e47;
+                    padding: 10px;
+                    border-radius: 5px;
+                    font-size: 14px;    width: 100%;
+                    ">
+                    <br>
+                    <input type="text" id="signupname" placeholder="Username" style="border-width: 0px;
+                    background: #475e6b !important;
+                    border: 1px solid #2f3e47;
+                    padding: 10px;
+                    border-radius: 5px;
+                    font-size: 14px;    width: 100%;
+                    ">
+                    <br>
+                    <input type="password" id="signupPw" style="border-width: 0px;
+                    background: #475e6b !important;
+                    border: 1px solid #2f3e47;
+                    padding: 10px;
+                    border-radius: 5px;
+                    font-size: 14px;    width: 100%;
+                    "placeholder="Password">
+                    <br>
+                    <div class="" style="font-size: 14px;text-align: left;">
+                        <label for="checkbox1" style="font-size:13px;font-weight:normal;">
+                            <input type="checkbox" id="checkbox1" name="checkbox1" value="option1"> I accept <span style="color: #5586b5;">Terms and Conditions</span>
+                        </label>
+                    </div>
+                    <button type="button" onclick="register()" class="btn btn-block" style="background-color: #5a8fc2;border: 1px solid #5a8fc2;">Sign Up</button>
+                    <br>
+                    <h6>or sign up with</h6>
+                    <div class="card-footer p-4">
+                        <div class="row">
+                            <div class="col-sm-6" style="border-right: 1px solid white;">
+                                <div>
+                                    <i class="fa fa-facebook-square" style="font-size:30px;color:white"></i>
+                                </div>
+                                <h6>Facebook</h6>
+                            </div>
+                            <div class="col-sm-6">
+                                <div>
+                                    <i class="fa fa-linkedin-square" style="font-size:30px;color:white"></i>
+                                </div>
+                                <h6>LinkedIn</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <h6>All ready have an account? <span style="color: #5586b5;">Log In</span></h6>
+                </div>
+
+
+
+
+                <div id="loginForm" style="height:auto; padding:50px;background-color:#253138; font-size:23px; text-align:center; color:white; " class="lity-hide lightboxes">
+
+                  Log In
+                    <br><br>
+                    <div class="card-footer p-4">
+                            <div class="row">
+                                <div class="col-sm-6" style="border-right: 1px solid white;">
+                                    <div>
+                                        <i class="fa fa-facebook-square" style="font-size:30px;color:white"></i>
+                                    </div>
+                                    <h6>Facebook</h6>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div>
+                                        <i class="fa fa-linkedin-square" style="font-size:30px;color:white"></i>
+                                    </div>
+                                    <h6>LinkedIn</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    <input type="text" id="loginEmail" placeholder="Username" style="border-width: 0px;
+                    background: #475e6b !important;
+                    border: 1px solid #2f3e47;
+                    padding: 10px;
+                    border-radius: 5px;
+                    font-size: 14px;    width: 100%;
+                    ">
                     <br>
 
-                    <input type="password" id="signupPw" placeholder="Password">
-                    <br><br>
-                    <button class="btn" onclick="register()">
-
-                    Finish
-                    </button>
-                </div>
-
-
-
-
-                <div id="loginForm" style="height:auto; padding:50px; background-color:black; font-size:12px; text-align:center; color:white; " class="lity-hide lightboxes">
-
-                  Login
-                    <br><br>
-
-                    <input type="text" id="loginEmail" placeholder="E-mail" style="border-width:0px">
+                    <input type="password" id="singupPw" placeholder="Password" style="border-width: 0px;
+                    background: #475e6b !important;
+                    border: 1px solid #2f3e47;
+                    padding: 10px;
+                    border-radius: 5px;
+                    font-size: 14px;    width: 100%;
+                    ">
+                    <div class="" style="font-size: 14px;text-align: left;">
+                        <label for="checkbox2" style="font-size:13px;font-weight:normal;">
+                            <input type="checkbox" id="checkbox1" name="checkbox2" value="option1"> Remember me 
+                        </label>
+                        <a href="" style="font-size:13px;margin-top:8px;float:right;color: #cf4d4f;">Forgot Password?</a>
+                    </div>
                     <br>
-
-                    <input type="password" id="singupPw" placeholder="Password">
-                    <br><br>
-                    <button class="btn" onclick="login()">
-
-                    Finish
-                    </button>
+                    <button type="button" onclick="login()" class="btn btn-block" style="background-color: #5a8fc2;border: 1px solid #5a8fc2;">Log In</button>
+                    <h6>Don't have an account? <span style="color: #5586b5;">Sign Up</span></h6>
                 </div>
 
 
