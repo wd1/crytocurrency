@@ -1,17 +1,18 @@
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="description" content="x-squared project">
         <meta name="author" content="Coderthemes">
 
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-        <title>Adminto - Responsive Admin Dashboard Template</title>
+        <title>x²</title>
 
         <!--Morris Chart CSS -->
-		<link rel="stylesheet" href="assets/plugins/morris/morris.css">
+        <link rel="stylesheet" href="assets/plugins/morris/morris.css">
 
         <!-- App css -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -44,7 +45,7 @@
 
                 <!-- LOGO -->
                 <div class="topbar-left">
-                    <a href="index.html" class="logo"><span>Admin<span>to</span></span><i class="zmdi zmdi-layers"></i></a>
+                    <a href="index.html" class="logo" style="color:white !important">x²</a>
                 </div>
 
                 <!-- Button mobile view to collapse sidebar menu -->
@@ -66,26 +67,30 @@
 
                         <!-- Right(Notification and Searchbox -->
                         <ul id="top_rightbar" class="nav navbar-nav navbar-right">
-                            <li class="hidden-xs">
-                                <form role="search" class="app-search search_form">
-                                    <input type="text" placeholder="Search By Currency, News, Other"
-                                            class="form-control">
+                            <li >
+                                <form role="search" class="app-search search_form" action="javascript:searchEnter()">
+                                    <input type="text" placeholder="Search By Crypto, Stock, etc"
+                                            class="form-control" onKeyUp="getSuggestedSearch()" id="searchInput" autocomplete="off">
                                     <a href=""><i class="fa fa-search"></i></a>
                                 </form>
+                                <div id="absContainer" style="position:absolute; margin-left:30px">
+                                  <div id ="resultsContainer" style="background-color:#2f3e47; color:white; padding:5px; padding-left:10px; padding-right:10px"></div>
+
+                                </div>
                             </li>
                             <li class="hidden-xs">
                                 <div>
                                     <p style="text-align:right;    padding-left: 20px;
                                     padding-right: 40px;
                                     margin-top: 18px;
-                                    margin-left: 20px;"><span style="color:#57c272">aaaMock Portfolio: $25000</span><br><span style="color:#71b6f9">Market Portfolio: $30000</span></p>
+                                    margin-left: 20px;"><span style="color:#57c272">Mock Portfolio: <span id="userBalance">$25000</span></span><br><span style="color:#71b6f9">Market Portfolio: <span id="userRealBalance">$0</span></span></p>
                                 </div>
                             </li>
                             <li>
                                 <!-- Notification -->
                                 <div class="notification-box">
                                     <ul class="list-inline m-b-0" style="margin-left: 30px;margin-right: 30px;">
-                                        <li>
+                                        <!-- <li>
                                             <a href="javascript:void(0);" class="right-bar-toggle">
                                                 <i class="zmdi zmdi-notifications-none"></i>
                                             </a>
@@ -99,6 +104,12 @@
                                                 <i class="zmdi zmdi-email"></i>
                                             </a>
                                             
+                                        </li> -->
+                                        <li style="margin-left: 20px;vertical-align: top;">
+                                           <span id="signer"> <a href="#signupForm" data-lity style="font-size:12px;opacity:.8;text-decoration:none; color:#fff"> Sign-up</a></span>
+                                        </li>
+                                        <li style="margin-left: 0px;vertical-align: top;">
+                                           <span id="signer2"> <a href="#loginForm" data-lity style="font-size:12px;opacity:.8;text-decoration:none; color:#fff"> Login</a></span>
                                         </li>
                                     </ul>
                                 </div>
@@ -119,11 +130,8 @@
 
                     <!-- User -->
                     <div class="user-box">
-                        <div class="user-img">
-                            <img src="assets/images/users/avatar-1.jpg" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
-                            <div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>
-                        </div>
-                        <h5><a href="#">Mat Helme</a> </h5>
+                       
+                        <h5><a href="#">Welcome</a> </h5>
                         <ul class="list-inline">
                             <li>
                                 <a href="#" >
@@ -132,7 +140,7 @@
                             </li>
 
                             <li>
-                                <a href="#" class="text-custom">
+                                <a href="javascript:logout()" class="text-custom">
                                     <i class="zmdi zmdi-power"></i>
                                 </a>
                             </li>
@@ -143,16 +151,39 @@
                     <!--- Sidemenu -->
                     <div id="sidebar-menu">
                         <ul>
-                        	<li class="text-muted menu-title">Navigation</li>
+                            <li class="text-muted menu-title">Navigation</li>
 
                             <li>
-                                <a href="index.html" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                                <a href="#" onclick="dashboard_click()" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
                             </li>
 
                             <li>
-                                <a href="typography.html" class="waves-effect"><i class="zmdi zmdi-format-underlined"></i> <span> Typography </span> </a>
+                                <a href="#" class="waves-effect"><i class="zmdi zmdi-chart"></i> <span> Portfolio </span> </a>
                             </li>
 
+                               <li>
+                                <a href="#" class="waves-effect"><i class="zmdi zmdi-search"></i> <span> Search / Commands </span> </a>
+                            </li>
+
+
+
+                            <li>
+                                <a href="#" class="waves-effect"><i class="zmdi zmdi-accounts-alt"></i> <span> Colleagues </span> </a>
+                            </li>
+
+                             <li>
+                                <a href="#chatForm" class="waves-effect" data-lity><i class="zmdi zmdi-comments"></i><span> Topic Chat </span></a>
+                            </li>
+
+                              <li>
+                                <a href="#" class="waves-effect"><i class="zmdi zmdi-comment"></i> <span> Messenger </span> </a>
+                            </li>
+
+                             <li>
+                                <a href="#" onclick="email_click()" class="waves-effect"><i class="zmdi zmdi-email"></i> <span> Email</span> </a>
+                            </li>
+
+                            <!--
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-invert-colors"></i> <span> User Interface </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
@@ -190,7 +221,7 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-view-list"></i> <span> Tables </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
-                                	<li><a href="tables-basic.html">Basic Tables</a></li>
+                                    <li><a href="tables-basic.html">Basic Tables</a></li>
                                     <li><a href="tables-datatable.html">Data Table</a></li>
                                     <li><a href="tables-responsive.html">Responsive Table</a></li>
                                     <li><a href="tables-editable.html">Editable Table</a></li>
@@ -251,7 +282,7 @@
                                     <li><a href="extras-comingsoon.html">Coming soon</a></li>
                                 </ul>
                             </li>
-
+    -->
                         </ul>
                         <div class="clearfix"></div>
                     </div>
@@ -269,574 +300,713 @@
             <!-- Start right Content here -->
             <!-- ============================================================== -->
             <div class="content-page" style="background:#253138">
+                <div id="dashboard_main" class="main_subpanel" tyle="display:block;">
                 <!-- Start content -->
-                <script src="js/jquery-2.1.4.min.js"></script>
-                <script src="js/highstock.js"></script>
-                <script src="js/modules/drag-panes.js"></script>
-                <script src="js/modules/exporting.js"></script>
-
-
-                <script src="js/amcharts.js"></script>
-                <script src="https://www.amcharts.com/lib/3/serial.js"></script>
-                <script src="https://www.amcharts.com/lib/3/plugins/dataloader/dataloader.min.js"></script>
-                <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-                <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-                <link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
-                <!--<script src="https://www.amcharts.com/lib/3/themes/none.js"></script>-->
-                <script src="https://www.amcharts.com/lib/3/themes/dark.js"></script>
-
-                <script src="js/bootstrap.js"></script>
-                <script src="js/lity.js"></script>
-                <!-- <link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all" /> -->
-                <link rel="stylesheet" href="css/lity.css" type="text/css" media="all" />
-
-
-
-
-
-
-
-
-
-                <!-- <div id="naver" style="width:100%; height:38px; background-color:#000; padding:10px; font-size:12px; position:fixed; top:0px; left:0px; z-index:100; opacity:.8">
-
-                <div id="signer" style="float:right">
-                 <a href="#signupForm" data-lity style="text-decoration:none; color:#fff"> Sign-up</a>
-                 | 
-                  <a href="#loginForm" data-lity style="text-decoration:none; color:#fff"> Login</a>
-                </div>
-
-                <div id="signer" style="float:right; margin-right:25px;">
-                  <span id="user">Guest Mock Portfolio:</span> <b ><span id="userBalance">$25,000</span></b>
-                </div>
-
-                <div id="signer2" style="float:left">
-
-                <b>x²</b>
-                </div>
-
-                </div>
-                 -->
-                <div id="signupForm" style="height:auto; padding:50px; background-color:black; font-size:12px; text-align:center; color:white; " class="lity-hide lightboxes">
-
-                  Sign-up
-                    <br><br>
-
-                    <input type="text" id="signupEmail" placeholder="E-mail" style="border-width:0px">
-                    <br>
-
-                    <input type="password" id="signupPw" placeholder="Password">
-                    <br><br>
-                    <button class="btn" onclick="register()">
-
-                    Finish
-                    </button>
-                </div>
-
-
-
-
-                <div id="loginForm" style="height:auto; padding:50px; background-color:black; font-size:12px; text-align:center; color:white; " class="lity-hide lightboxes">
-
-                  Login
-                    <br><br>
-
-                    <input type="text" id="loginEmail" placeholder="E-mail" style="border-width:0px">
-                    <br>
-
-                    <input type="password" id="singupPw" placeholder="Password">
-                    <br><br>
-                    <button class="btn" onclick="login()">
-
-                    Finish
-                    </button>
-                </div>
-
-
-
-
-
-                <div class="checkout-wrap" style="margin-top: 150px;
-                  ">
-                    <ul class="checkout-bar" style="margin-left:23px;">
-                            
-                        <!--<li class="visited first">-->
-                        <li class="active" style="">
-                            <a href="#">Analyze</a>
-                        </li>
-                        
-                        <!--<li class="previous visited">Shipping & Billing</li>-->
-                        <li class="next">Mock Trade</li>
-                        
-                        <li class="next">Market Trade</li>
-
-                            
-                    </ul>
-                </div>
-                <div id="main_panel" class="container" style="
-                margin-top: 20px;">
-                    <div class=" col-md-8" style="">
-                        <div class="card_panel" style="padding-left: 20px;
-                        padding-top: 15px;">
-                            <h3>Overview </h3>
-                            <div id="hello" class="container" style="text-align:center; padding:20px; font-size:10px; margin-top:10px">
-                                
-                            <div class="row">
-                            <div class="col-sm-4">
-                            Exchange<br>
-                            <div class="dropdown">
-                            <div class="dropdown-dark">
-                            <select id="exchange" class="dropdown-select">
-                                <option value="binance" >Binance</option>
-                                <option value="bitfinex" selected>Bitfinex</option>
-                            <option value="bitfinex" disabled>Bithumb</option>
-                                <option value="bitfinex" disabled>Bitstamp</option>
-                            <option value="bitfinex" disabled>Bittrex</option>
-                            
-                            <option value="bitfinex" disabled>CEX.IO</option>
-                            
-                            
-                                <option value="bitfinex" disabled>Coinnest</option>
-                            <option value="bitfinex" disabled>Coinone</option>
-                                <option value="bitfinex" disabled>Etherdelta</option>
-                                <option value="bitfinex" disabled>GDAX</option>
-                                <option value="bitfinex" disabled>Gemini</option>
-                                <option value="bitfinex" disabled>Huobi</option>
-                                <option value="bitfinex" disabled>itBit</option>
-                                <option value="bitfinex" disabled>Korbit</option>
-                                <option value="bitfinex" disabled>Kraken</option>
-                                    <option value="liqui">Liqui</option>
-                            
-                            <option value="poloniex">Poloniex</option>
-                            <option value="poloniex" disabled>Proof AMP</option>
-                            
-                            
-                            
-                            
-                            
-
-
-                                
-                                
-                                
-
-
-                            </select>
-                            </div>
-                            </div>
-                            </div>
-
-
-                            <div class="col-sm-4">
-
-                            Currency Pair<br>
-                            <div class="dropdown">
-                            <div class="dropdown-dark">
-                            <select id="currencypair" class="dropdown-select">
-                                <option value="BTCUSD">BTC / USD</option>
-                            <option value="ETHUSD" selected>ETH / USD</option>
-                                <option value="BCHUSD">BCH / USD</option>
-                                <option value="ETCUSD">ETC / USD</option>
-                                <option value="LTCUSD">LTC / USD</option>
-                                    <option value="ETCUSD" disabled>XRP / USD</option>
-                                    <option value="ETCUSD" disabled>DASH / USD</option>
-                                            <option value="ETCUSD" disabled>NEO / USD</option>
-                                                <option value="ETCUSD" disabled>IOTA / USD</option>
-                                                <option value="ETCUSD" disabled>MON / USD</option>
-                                                    <option value="ETCUSD" disabled>NEM / USD</option>
-                                                    <option value="ETCUSD" disabled>GLM / USD</option>
-                                                    <option value="ETCUSD" disabled>KYB / USD</option>
-                                                    <option value="ETCUSD" disabled>RDN / USD</option>
-                                                    <option value="ETCUSD" disabled>TAAS / USD</option>
-                                                    <option value="ETCUSD" disabled>0X / USD</option>
-                                                            <option value="ETCUSD" disabled>STRJ/ USD</option>
-                            
-                            </select>
-                            </div>
-                            </div>
-                            </div>
-
-
-                            <div class="col-sm-4">
-
-                            Period
-                            <br>
-
-                            <div class="dropdown">
-                            <div class="dropdown-dark">
-
-                            <select id="period" class="dropdown-select">
-                            <option value="1m">1 minute</option>
-                                <option value="5m">5 minutes</option>
-                                <option value="15m">15 minutes</option>
-                                <option value="30m">30 minutes</option>
-                                <option value="1h" selected>1 hour</option>
-                                <option value="1D">1 day</option>
-                                <option value="7D">7 days</option>
-                                <option value="1M">1 month</option>
-                            </select>
-
-                            </div>
-                            </div>
-                            </div>
-
-
-                            </div>
-
-                            </div>
-
-                            <div id="container" style="height: 400px; min-width: 310px"></div>
-
-
-                            
-                            <br><br>
-
-                            <div class="container" style="display: none;">
-                            <div class="row">
-                            <div class="col-sm-6">
-                                <div class="card">
-                                <div class="card-block">
-                                    <h3>Buy <span class="symbol1">BTC</span></h3>
-                                    <div id="mt-amount-control-group-short" class="control-group form-group">
-                            <label class="control-label" for="mt-amount-input-short">Amount to Buy</label>
-                            <div class="controls">
-  
-                            <span id="mt-amount-help-inline-short" class="help-block"></span>
-                            </div>
-                            </div>
-
-
-                            <div id="mt-amount-control-group-short" class="control-group form-group">
-                            <label class="control-label" for="mt-amount-input-short">Price per <span class="symbol1">BTC</span></label>
-                            <div class="controls">
-                            <div class="input-group">
-                            <input id="buyPrice" type="text" class="form-control input-small" name="amount" numbers-and-one-dot-only="">
-                            <span id="mt-amount-symbol-short" class="input-group-addon">USD</span>
-                            </div>
-                            <span id="mt-amount-help-inline-short" class="help-block"></span>
-                            </div>
-                            </div>
-
-
-                                    <a href="javascript:placeOrder()" class="btn btn-primary">Place Order</a>
-                                    <a href="javascript:placeMockBuyOrder()" class="btn btn-primary" id="mockBuyButton">Place Mock Order</a>
-                                </div>
-                                </div>
-
-
-                            </div>
-
-
-
-
-
-                            <div class="col-sm-6">
-                                <div class="card">
-                                <div class="card-block">
-                                    <h3>Sell <span class="symbol1">BTC</span></h3>
-                                    <div id="mt-amount-control-group-short" class="control-group form-group">
-                            <label class="control-label" for="mt-amount-input-short">Amount to Sell</label>
-                            <div class="controls">
-                            <div class="input-group">
-                            <input id="sellAmount" type="text" class="form-control input-small" name="amount" numbers-and-one-dot-only="">
-                            <span id="mt-amount-symbol-short" class="input-group-addon symbol1">BTC</span>
-                            </div>
-                            <span id="mt-amount-help-inline-short" class="help-block"></span>
-                            </div>
-                            </div>
-
-
-                            <div id="mt-amount-control-group-short" class="control-group form-group">
-                            <label class="control-label" for="mt-amount-input-short">Price per <span class="symbol1">BTC</span></label>
-                            <div class="controls">
-                            <div class="input-group">
-                            <input id="sellPrice" type="text" class="form-control input-small" name="amount" numbers-and-one-dot-only="">
-                            <span id="mt-amount-symbol-short" class="input-group-addon">USD</span>
-                            </div>
-                            <span id="mt-amount-help-inline-short" class="help-block"></span>
-                            </div>
-                            </div>
-
-
-                                    <a href="javascript:placeOrder()" class="btn btn-primary">Place Order</a>
-                                    <a href="javascript:placeMockSellOrder()" class="btn btn-primary" id="mockSellButton">Place Mock Order</a>
-                                </div>
-                                </div>
-
-
-                            </div>
-
-
-                            </div>
-
-
-                            <br><br>
-
-
-
-
-
-                            <div class="container">
-                            <div class="row">
-                            <div class="col-sm-6">
-                                <div class="card">
-                            <div style="width: 96%">
-                            <header>
-                            <span class="title">Sell Orders</span>
-                            <span class="text-muted pull-right">
-
-                            </span>
-                            </header>
-                            <div style="overflow-y: hidden;height: auto;width: 106%;">
-                            <table id="md-sell" class="table table-bordered md-table">
-                            <thead>
-                            <tr>
-                            <th>Price per <span class="symbol1">BTC</span></th>
-                            <th><span class="symbol1">BTC</span> Amount</th>
-
-                            </tr>
-                            </thead>
-                            <tbody id="md-sell-tbody"><tr id="md-sell-7583-9884" price="7583.9884" amount="19853200" t="sell" style="cursor: pointer;"><td>7583.9884</td><td class="amount"><i class="icn icn-BTC"></i>0.19853200</td></tr></tbody>
-                            </table>
-                            <div id="md-sell-loading" style="display: none;"><div id="floatingCirclesG" class="loading_animation">      <div class="f_circleG" id="frotateG_01"></div><div class="f_circleG" id="frotateG_02">  </div><div class="f_circleG" id="frotateG_03">  </div><div class="f_circleG" id="frotateG_04">  </div><div class="f_circleG" id="frotateG_05">  </div><div class="f_circleG" id="frotateG_06">  </div><div class="f_circleG" id="frotateG_07">  </div><div class="f_circleG" id="frotateG_08">  </div></div></div>
-                            </div>
-                            <div id="md-sell-help-text"></div>
-                            </div>
-
-                            </div>
-                            </div>
-
-
-
-
-                            <div class="col-sm-6">
-                                <div class="card">
-
-                            <div style="width: 95%" class="pull-right">
-                            <header>
-                            <span class="title">Buy Orders</span>
-                            <span class="text-muted pull-right">
-
-                            </span>
-                            </header>
-                            <div style="height: auto;overflow-y: hidden;width: 106%;">
-                                            <table id="md-buy" class="table table-bordered md-table">
-                                            <thead>
-                                            <tr>
-                                            <th>Price per <span class="symbol1">BTC</span></th>
-                                            <th><span class="symbol1">BTC</span> Amount</th>
-
-                                            </tr>
-                                            </thead>
-                                            <tbody id="md-buy-tbody"><tr id="md-buy-7569-0335" price="7569.0335" amount="2000000" t="buy" class="highlight-green" style="cursor: pointer;"><td>7569.0335</td><td class="amount"><i class="icn icn-BTC"></i>0.02000000</td></tr></tr>
-                                            </tbody>
-                                            </table>
-                                        
-                            </div>
-
-                            </div>
-
-                            </div>
-                            </div>
-
-
-
-
-
-
-
-                            </div>
-                            </div>
-
-
-                            <br><br>
-
-
-
-
-                            <div id="trade-active-orders" class="active-orders" style="display: block;">
-                            <div class="row">
-                            <div class="col-xs-12">
-                            <h3>Active Orders <button style="float: right;" id="cancel-all-orders-button" class="btn btn-red btn-mini"><i class="icn-remove icon-white"></i>Cancel All</button></h3>
-
-                            <div style="overflow-y: hidden; height: 233px; background: transparent;">
-                            <table id="orders" class="table table-bordered">
-                            <thead>
-                            <tr><th>Date</th>
-                            <th>Type</th>
-                            <th>Amount <span class="symbol1">BTC</span></th>
-                            <th><span class="symbol1">BTC</span> Remaining</th>
-                            <th>Price</th>
-                            <th class="symbol2">Currency</th>
-                            <th>Fee (%)</th>
-                            <th width="100">Cancel</th>
-                            </tr></thead>
-                            <tbody id="orders-tbody"></tbody>
-                            </table>
-                            <div id="orders-loading" style="display: none;"></div>
-                            </div>
-                            <br>
-                            </div>
-                            </div>
-                            </div>
-
-
-
-
-
-                            </div>
-
-
-
-                            <div id="theLoader" style="top:0px; position:fixed; left:0px; width:100%; height:100%; z-index:30; opacity:.9">
-
-                            <div class="loading">
-                            <div class="bullet"></div>
-                            <div class="bullet"></div>
-                            <div class="bullet"></div>
-                            <div class="bullet"></div>
-                            </div>
-
-                            </div>
-
-
-
-                            <script src="js/custom.js"></script>
-
-                            
+                    <script src="js/jquery-2.1.4.min.js"></script>
+                    <script src="js/highstock.js"></script>
+                    <script src="js/modules/drag-panes.js"></script>
+                    <script src="js/modules/exporting.js"></script>
+
+                    <!-- Indicators -->
+                    <script src="js/modules/indicators/indicators.js"></script>
+                    <script src="js/modules/indicators/sma.js"></script>
+                    <script src="js/modules/indicators/ema.js"></script>
+                    <script src="js/modules/indicators/rsi.js"></script>
+                    <script src="js/modules/indicators/atr.js"></script>
+
+                    <script src="js/amcharts.js"></script>
+                    <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+                    <script src="https://www.amcharts.com/lib/3/plugins/dataloader/dataloader.min.js"></script>
+                    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+                    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+                    <link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
+                    <link rel="stylesheet" href="css/chat.scss" type="text/css" media="all" />
+                    <!--<script src="https://www.amcharts.com/lib/3/themes/none.js"></script>-->
+                    <script src="https://www.amcharts.com/lib/3/themes/dark.js"></script>
+
+                    <script src="js/bootstrap.js"></script>
+                    <script src="js/lity.js"></script>
+                    <!-- <link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all" /> -->
+                    <link rel="stylesheet" href="css/lity.css" type="text/css" media="all" />
+
+
+
+
+
+
+
+
+
+                    
+                    
+                    <div id="signupForm" style="height:auto; padding:50px; background-color:#253138; font-size:23px; text-align:center; color:white; " class="lity-hide lightboxes col-md-4">
+
+                    Register
+                        <br><br>
+
+                        <input type="text" id="signupEmail" placeholder="E-mail" style="border-width: 0px;
+                        background: #475e6b !important;
+                        border: 1px solid #2f3e47;
+                        padding: 10px;
+                        border-radius: 5px;
+                        font-size: 14px;    width: 100%;
+                        ">
+                        <br>
+                        <input type="text" id="signupname" placeholder="Username" style="border-width: 0px;
+                        background: #475e6b !important;
+                        border: 1px solid #2f3e47;
+                        padding: 10px;
+                        border-radius: 5px;
+                        font-size: 14px;    width: 100%;
+                        ">
+                        <br>
+                        <input type="password" id="signupPw" style="border-width: 0px;
+                        background: #475e6b !important;
+                        border: 1px solid #2f3e47;
+                        padding: 10px;
+                        border-radius: 5px;
+                        font-size: 14px;    width: 100%;
+                        "placeholder="Password">
+                        <br>
+                        <div class="" style="font-size: 14px;text-align: left;">
+                            <label for="checkbox1" style="font-size:13px;font-weight:normal;">
+                                <input type="checkbox" id="checkbox1" name="checkbox1" value="option1" style="min-width:0px;"> I accept <span style="color: #5586b5;">Terms and Conditions</span>
+                            </label>
                         </div>
-                        <div class="card_panel" style="margin-top:10px;padding:20px;margin-bottom: 10px;">
-                            <div id="trade-active-orders" class="active-orders" style="display: block;">
+                        <button type="button" onclick="register()" class="btn btn-block" style="background-color: #5a8fc2;border: 1px solid #5a8fc2;">Sign Up</button>
+                        <br>
+                        <h6>or sign up with</h6>
+                        <div class="card-footer p-4">
+                            <div class="row">
+                                <div class="col-sm-6" style="border-right: 1px solid white;">
+                                    <div>
+                                        <i class="fa fa-facebook-square" style="font-size:30px;color:white"></i>
+                                    </div>
+                                    <h6>Facebook</h6>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div>
+                                        <i class="fa fa-linkedin-square" style="font-size:30px;color:white"></i>
+                                    </div>
+                                    <h6>LinkedIn</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <h6>All ready have an account? <span style="color: #5586b5;">Log In</span></h6>
+                    </div>
+
+
+
+
+                    <div id="loginForm" style="height:auto; padding:50px;background-color:#253138; font-size:23px; text-align:center; color:white; " class="lity-hide lightboxes">
+
+                    Log In
+                        <br><br>
+                        <div class="card-footer p-4">
                                 <div class="row">
-                                    <div class="col-xs-12">
-                                        <h3>Portfolio &nbsp;&nbsp;<span style="font-size:30px;"> $30.0501</span></h3>
-    
-                                        <div class="container" style="overflow-y: hidden; background: transparent;">
-                                            <table id="orders" class="table table-bordered">
-                                                <thead style="border-bottom: 2px solid #636b6f;">
-                                                    <tr>
-                                                        <th style="width:30%;">Portfolio Value</th>
-                                                        <th style="width:25%;">$30,0501</th>
-                                                        <th style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;">Chg,$1D</th>
-                                                        <th style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;">Chg,$7D</th>
-                                                        <th style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;">Total Gains</th>
-                                                    </tr>
-                                                </thead>
-                                       
-                                                <tbody id="orders-tbody">
-                                                    <tr style="font-weight: 600;color:white;">
-                                                        <td style="width:30%;">Fiat</td>
-                                                        <td style="width:25%;">$10,501</td>
-                                                        <td style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;color:#15a661;">4.34%</td>
-                                                        <td style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;color:#15a661;">3.34%</td>
-                                                        <td style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;color:#15a661;">1.23%</td>
-                                                    </tr>
-                                                    <tr style="font-weight: 600;color:white;border-bottom: 2px solid #636b6f;">
-                                                        <td style="width:30%;">Crypto</td>
-                                                        <td style="width:25%;">$20,000</td>
-                                                        <td style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;color:#15a661;">3.45%</td>
-                                                        <td style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;color:#15a661;">23.43%</td>
-                                                        <td style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;color:#15a661;">118.23%</td>
-                                                    </tr>
-                                                    <tr style="font-weight: 600;color:white;">
-                                                        <td style="width:30%;">Bitcoin</td>
-                                                        <td style="width:25%;">1.2BTC(9,000USD)</td>
-                                                        <td style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;color:#15a661;">1.12%</td>
-                                                        <td style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;color:#15a661;">3.34%</td>
-                                                        <td style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;color:#15a661;">56.34%</td>
-                                                    </tr>
-                                                    <tr style="font-weight: 600;color:white;">
-                                                        <td style="width:30%;">Ether</td>
-                                                        <td style="width:25%;">10 ETH(4,700USD)</td>
-                                                        <td style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;color:#15a661;">50.43%</td>
-                                                        <td style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;color:#15a661;">23.34%</td>
-                                                        <td style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;color:#15a661;">80.43%</td>
-                                                    </tr>
-                                                    <tr style="font-weight: 600;color:white;">
-                                                        <td style="width:30%;">Dubai Marina Tokens</td>
-                                                        <td style="width:25%;">5(1,000USD)</td>
-                                                        <td style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;color:#7b454b;">3.44%</td>
-                                                        <td style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;color:#15a661;">1.23%</td>
-                                                        <td style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;color:#7b454b;">0.32%</td>
-                                                    </tr>
-                                                    <tr style="font-weight: 600;color:white;">
-                                                        <td style="width:30%;">TaaS</td>
-                                                        <td style="width:25%;">50(50USD)</td>
-                                                        <td style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;color:#15a661;">1.12%</td>
-                                                        <td style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;color:#15a661;">3.34%</td>
-                                                        <td style="font-size: 11px;text-align:center;
-                                                        font-weight: normal;width:15%;color:#15a661;">56.34%</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <div id="orders-loading" style="display: none;"></div>
+                                    <div class="col-sm-6" style="border-right: 1px solid white;">
+                                        <div>
+                                            <i class="fa fa-facebook-square" style="font-size:30px;color:white"></i>
                                         </div>
-                                        <br>
+                                        <h6>Facebook</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div>
+                                            <i class="fa fa-linkedin-square" style="font-size:30px;color:white"></i>
+                                        </div>
+                                        <h6>LinkedIn</h6>
                                     </div>
                                 </div>
                             </div>
+
+                        <input type="text" id="loginEmail" placeholder="Username" style="border-width: 0px;
+                        background: #475e6b !important;
+                        border: 1px solid #2f3e47;
+                        padding: 10px;
+                        border-radius: 5px;
+                        font-size: 14px;    width: 100%;
+                        ">
+                        <br>
+
+                        <input type="password" id="singupPw" placeholder="Password" style="border-width: 0px;
+                        background: #475e6b !important;
+                        border: 1px solid #2f3e47;
+                        padding: 10px;
+                        border-radius: 5px;
+                        font-size: 14px;    width: 100%;
+                        ">
+                        <div class="" style="font-size: 14px;text-align: left;">
+                            <label for="checkbox2" style="font-size:13px;font-weight:normal;">
+                                <input type="checkbox" id="checkbox1" name="checkbox2" value="option1" style="min-width:0px;"> Remember me 
+                            </label>
+                            <a href="" style="font-size:13px;margin-top:8px;float:right;color: #cf4d4f;">Forgot Password?</a>
                         </div>
+                        <br>
+                        <button type="button" onclick="login()" class="btn btn-block" style="background-color: #5a8fc2;border: 1px solid #5a8fc2;">Log In</button>
+                        <h6>Don't have an account? <span style="color: #5586b5;">Sign Up</span></h6>
                     </div>
-                    <div class="col-md-4">
-                        <div >
-                            <div id="watchlist" class="card_panel" style="color: #fff;padding:20px;">
+
+                    <div id="chatForm" style="" class="lity-hide lightboxes">
+                        
+                                            <div class="chat_container clearfix">
+                                                <div class="chat col-sm-7" style="">
+                                                <div class="chat-header clearfix">
+                                                    
+                                                    <div class="chat-about">
+                                                    <div class="chat-with">People chatting about ETH</div>
+                                                    </div>
+                                                    <div class="three_dot"></div>
+                                                </div> <!-- end chat-header -->
+                                                
+                                                <div class="chat-history ">
+                                                    <ul style="list-style:none;padding: 10px;">
+                                                    <li>
+                                                        <div>
+                                                            <img class="col-sm-2" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_10.jpg" style="border-radius: 100px;padding-left:0px;padding-right:0px;" alt="avatar" />
+                                                            <div class="message-data col-sm-9 col-md-offset-1">
+                                                            <div class="message-data-name">Donald</div>
+                                                            <div class="message-data-time">10:12 AM, Today</divs>
+                                                            <div class="" style="padding-top:5px;">
+                                                                Are we meeting today? Project has been already finished and I have results to show you.
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        <div style="clear:both;"></div>
+                                                    </li>
+                                                    <li>
+                                                            <div>
+                                                                <img class="col-sm-2" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_03.jpg" style="border-radius: 100px;padding-left:0px;padding-right:0px;" alt="avatar" />
+                                                                <div class="message-data col-sm-9 col-md-offset-1">
+                                                                <div class="message-data-name">Sarah</div>
+                                                                <div class="message-data-time">10:15 AM, Today</divs>
+                                                                <div class="" style="padding-top:5px;">
+                                                                        Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                            <div style="clear:both;"></div>
+                                                        </li>
+                                                    <li>
+                                                        <div class="message-data">
+                                                        <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+                                                        <span class="message-data-time">10:31 AM, Today</span>
+                                                        </div>
+                                                        <i class="fa fa-circle online"></i>
+                                                        <i class="fa fa-circle online" style="color: #AED2A6"></i>
+                                                        <i class="fa fa-circle online" style="color:#DAE9DA"></i>
+                                                    </li>
+                                                    
+                                                    </ul>
+                                                    
+                                                </div> <!-- end chat-history -->
+                                                
+                                                <div class="input-prepend input-group" style="padding:10px 20px;margin:auto;display:flex;">
+                                                    <div style="border: 1px solid #c2cfd6;display:flex;border-right: none;">
+                                                        <span class="input-group-addon" style="align-self: center;padding-left: 16px; padding-right:16px;">+</span>
+                                                    </div>
+                                                        <input id="prependedInput" class="form-control" size="16" type="text">
+                                                        <button style="color:#7ebdfa;border: 1px solid #c2cfd6;border-left: none;font-size: 13px;padding: 8px;border-radius: 0px 3px 3px 0px;">Send</button>
+                                                </div>
+                                            
+                                                <!-- end chat-message -->
+                                                
+                                                </div> <!-- end chat -->
+                                                <div class="chat_people-list col-sm-5" id="chat_people-list">
+                                                    <!-- <div class="chat_search">
+                                                    <input type="text" placeholder="search" />
+                                                    <i class="fa fa-search"></i>
+                                                    </div> -->
+                                                    <ul class="list" style="">
+                                                        Most Active
+                                                        <li class="clearfix">
+                                                            <div class="about">
+                                                                <div class="name">
+                                                                    <i class="fa fa-circle online"></i> Donald
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        
+                                                        <li class="clearfix">
+                                                            <div class="about">
+                                                                <div class="name">
+                                                                    <i class="fa fa-circle offline"></i> Sarah
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                    <ul class="list" style="margin-top:30px;">
+                                                        Users
+                                                        <li class="clearfix">
+                                                            <div class="about">
+                                                                <div class="name">
+                                                                    <i class="fa fa-circle online"></i> Kirill
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        
+                                                        <li class="clearfix">
+                                                            <div class="about">
+                                                                <div class="name">
+                                                                    <i class="fa fa-circle offline"></i> John
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="clearfix">
+                                                            <div class="about">
+                                                                <div class="name">
+                                                                    <i class="fa fa-circle online"></i> Donald
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        
+                                                        <li class="clearfix">
+                                                            <div class="about">
+                                                                <div class="name">
+                                                                    <i class="fa fa-circle away"></i> Liza
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div> <!-- end container -->
+                                        </div>
+
+
+
+
+                    <div class="checkout-wrap" style="margin-top: 150px;
+                    ">
+                        <ul class="checkout-bar" style="margin-left:23px;">
+                                <a href="#">
+                            <!--<li class="visited first">-->
+                            <li class="active" style="">
+                                Analyze
+                            </li>
+                            
+                            <!--<li class="previous visited">Shipping & Billing</li>-->
+                            <li class="next">Mock Trade</li>
+                            
+                            <li class="next">Market Trade</li>
+                        </a>
+                                
+                        </ul>
+                    </div>
+                    <div id="main_panel" class="container" style="
+                    margin-top: 20px;">
+                        <div class=" col-md-8" style="">
+                            <div class="card_panel" style="padding-left: 20px;
+                            padding-top: 15px;">
+                                <h3>Overview </h3>
+                                <div id="hello" class="container" style="text-align:center; padding:20px; font-size:10px; margin-top:10px">
+                                    
+                                <div class="row">
+                                <div class="col-sm-4">
+                                Exchange<br>
+                                <div class="dropdown">
+                                <div class="dropdown-dark">
+                                <select id="exchange" class="dropdown-select">
+                                    <option value="binance" >Binance</option>
+                                    <option value="bitfinex" selected>Bitfinex</option>
+                                <option value="bitfinex" disabled>Bithumb</option>
+                                    <option value="bitfinex" disabled>Bitstamp</option>
+                                <option value="bitfinex" disabled>Bittrex</option>
+                                
+                                <option value="bitfinex" disabled>CEX.IO</option>
+                                
+                                
+                                    <option value="bitfinex" disabled>Coinnest</option>
+                                <option value="bitfinex" disabled>Coinone</option>
+                                    <option value="bitfinex" disabled>Etherdelta</option>
+                                    <option value="bitfinex" disabled>GDAX</option>
+                                    <option value="bitfinex" disabled>Gemini</option>
+                                    <option value="bitfinex" disabled>Huobi</option>
+                                    <option value="bitfinex" disabled>itBit</option>
+                                    <option value="bitfinex" disabled>Korbit</option>
+                                    <option value="bitfinex" disabled>Kraken</option>
+                                        <option value="liqui">Liqui</option>
+                                
+                                <option value="poloniex">Poloniex</option>
+                                <option value="poloniex" disabled>Proof AMP</option>
+                                
+                                
+                                
+                                
+                                
+
+
+                                    
+                                    
+                                    
+
+
+                                </select>
+                                </div>
+                                </div>
+                                </div>
+
+
+                                <div class="col-sm-4">
+
+                                Ticker<br>
+                                <div class="dropdown">
+                                <div class="dropdown-dark">
+                                <select id="currencypair" class="dropdown-select">
+                                    <option value="BTCUSD">BTC / USD</option>
+                                <option value="ETHUSD" selected>ETH / USD</option>
+                                    <option value="BCHUSD">BCH / USD</option>
+                                    <option value="ETCUSD">ETC / USD</option>
+                                    <option value="LTCUSD">LTC / USD</option>
+                                        <option value="ETCUSD" disabled>XRP / USD</option>
+                                        <option value="ETCUSD" disabled>DASH / USD</option>
+                                                <option value="ETCUSD" disabled>NEO / USD</option>
+                                                    <option value="ETCUSD" disabled>IOTA / USD</option>
+                                                    <option value="ETCUSD" disabled>MON / USD</option>
+                                                        <option value="ETCUSD" disabled>NEM / USD</option>
+                                                        <option value="ETCUSD" disabled>GLM / USD</option>
+                                                        <option value="ETCUSD" disabled>KYB / USD</option>
+                                                        <option value="ETCUSD" disabled>RDN / USD</option>
+                                                        <option value="ETCUSD" disabled>TAAS / USD</option>
+                                                        <option value="ETCUSD" disabled>0X / USD</option>
+                                                                <option value="ETCUSD" disabled>STRJ/ USD</option>
+                                
+                                </select>
+                                </div>
+                                </div>
+                                </div>
+
+
+                                <div class="col-sm-4">
+
+                                Period
+                                <br>
+
+                                <div class="dropdown">
+                                <div class="dropdown-dark">
+
+                                <select id="period" class="dropdown-select">
+                                <option value="1m">1 minute</option>
+                                    <option value="5m">5 minutes</option>
+                                    <option value="15m">15 minutes</option>
+                                    <option value="30m">30 minutes</option>
+                                    <option value="1h" selected>1 hour</option>
+                                    <option value="1D">1 day</option>
+                                    <option value="7D">7 days</option>
+                                    <option value="1M">1 month</option>
+                                </select>
+
+                                </div>
+                                </div>
+                                </div>
+
+
+                                </div>
+
+                                </div>
+
+                                <div class="chart-wrapper">
+                                    <!-- Indicators control -->
+                                    <div id="indicators_box" class="chart-indicators">
+                                        <div class="dropdown">
+                                            <div class="dropdown-dark">
+                                                <select id="indicators_control" class="dropdown-select"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="container" style="height: 400px; min-width: 310px"></div>
+                                </div>
+                                <br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <!--start mock orders-->
+
+
+
+
+
+                                <div class="container" style="display: none;" id="mockOrders">
+                                <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                    <div class="card-block">
+                                        <h3>Buy <span class="symbol1">BTC</span></h3>
+                                        <div id="mt-amount-control-group-short" class="control-group form-group">
+                                <label class="control-label" for="mt-amount-input-short">Amount to Buy</label>
+                            <div class="controls">
+                    <div class="input-group">
+                    <input id="buyAmount" type="text" class="form-control input-small" name="amount" numbers-and-one-dot-only="">
+                    <span id="mt-amount-symbol-short" class="input-group-addon symbol1">BTC</span>
+                    </div>
+                    <span id="mt-amount-help-inline-short" class="help-block"></span>
+                    </div>
+                                </div>
+
+
+                                <div id="mt-amount-control-group-short" class="control-group form-group">
+                                <label class="control-label" for="mt-amount-input-short">Price per <span class="symbol1">BTC</span></label>
+                                <div class="controls">
+                                <div class="input-group">
+                                <input id="buyPrice" type="text" class="form-control input-small" name="amount" numbers-and-one-dot-only="">
+                                <span id="mt-amount-symbol-short" class="input-group-addon">USD</span>
+                                </div>
+                                <span id="mt-amount-help-inline-short" class="help-block"></span>
+                                </div>
+                                </div>
+
+
+                                        <a href="javascript:placeOrder()" class="btn btn-primary realButton">Place Order</a>
+                                        <a href="javascript:placeMockBuyOrder()" class="btn btn-primary mockButton" id="mockBuyButton">Place Mock Order</a>
+                                    </div>
+                                    </div>
+
+
+                                </div>
+
+
+
+
+
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                    <div class="card-block">
+                                        <h3>Sell <span class="symbol1">BTC</span></h3>
+                                        <div id="mt-amount-control-group-short" class="control-group form-group">
+                                <label class="control-label" for="mt-amount-input-short">Amount to Sell</label>
+                                <div class="controls">
+                                <div class="input-group">
+                                <input id="sellAmount" type="text" class="form-control input-small" name="amount" numbers-and-one-dot-only="">
+                                <span id="mt-amount-symbol-short" class="input-group-addon symbol1">BTC</span>
+                                </div>
+                                <span id="mt-amount-help-inline-short" class="help-block"></span>
+                                </div>
+                                </div>
+
+
+                                <div id="mt-amount-control-group-short" class="control-group form-group">
+                                <label class="control-label" for="mt-amount-input-short">Price per <span class="symbol1">BTC</span></label>
+                                <div class="controls">
+                                <div class="input-group">
+                                <input id="sellPrice" type="text" class="form-control input-small" name="amount" numbers-and-one-dot-only="">
+                                <span id="mt-amount-symbol-short" class="input-group-addon">USD</span>
+                                </div>
+                                <span id="mt-amount-help-inline-short" class="help-block"></span>
+                                </div>
+                                </div>
+
+
+                                        <a href="javascript:placeOrder()" class="btn btn-primary realButton">Place Order</a>
+                                        <a href="javascript:placeMockSellOrder()" class="btn btn-primary mockButton" id="mockSellButton">Place Mock Order</a>
+                                    </div>
+                                    </div>
+
+
+                                </div>
+
+
+                                </div>
+
+
+                                <br><br>
+
+
+
+
+
+                                <div class="container">
+                                <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                <div style="width: 96%">
+                                <header>
+                                <span class="title">Sell Orders</span>
+                                <span class="text-muted pull-right">
+
+                                </span>
+                                </header>
+                                <div style="overflow-y: hidden;height: auto;width: 106%;">
+                                <table id="md-sell" class="table table-bordered md-table">
+                                <thead>
+                                <tr>
+                                <th>Price per <span class="symbol1">BTC</span></th>
+                                <th><span class="symbol1">BTC</span> Amount</th>
+
+                                </tr>
+                                </thead>
+                                <tbody id="md-sell-tbody"><tr id="md-sell-7583-9884" price="7583.9884" amount="19853200" t="sell" style="cursor: pointer;"><td>7583.9884</td><td class="amount"><i class="icn icn-BTC"></i>0.19853200</td></tr></tbody>
+                                </table>
+                                <div id="md-sell-loading" style="display: none;"><div id="floatingCirclesG" class="loading_animation">      <div class="f_circleG" id="frotateG_01"></div><div class="f_circleG" id="frotateG_02">  </div><div class="f_circleG" id="frotateG_03">  </div><div class="f_circleG" id="frotateG_04">  </div><div class="f_circleG" id="frotateG_05">  </div><div class="f_circleG" id="frotateG_06">  </div><div class="f_circleG" id="frotateG_07">  </div><div class="f_circleG" id="frotateG_08">  </div></div></div>
+                                </div>
+                                <div id="md-sell-help-text"></div>
+                                </div>
+
+                                </div>
+                                </div>
+
+
+
+
+                                <div class="col-sm-6">
+                                    <div class="card">
+
+                                <div style="width: 95%" class="pull-right">
+                                <header>
+                                <span class="title">Buy Orders</span>
+                                <span class="text-muted pull-right">
+
+                                </span>
+                                </header>
+                                <div style="height: auto;overflow-y: hidden;width: 106%;">
+                                                <table id="md-buy" class="table table-bordered md-table">
+                                                <thead>
+                                                <tr>
+                                                <th>Price per <span class="symbol1">BTC</span></th>
+                                                <th><span class="symbol1">BTC</span> Amount</th>
+
+                                                </tr>
+                                                </thead>
+                                                <tbody id="md-buy-tbody"><tr id="md-buy-7569-0335" price="7569.0335" amount="2000000" t="buy" class="highlight-green" style="cursor: pointer;"><td>7569.0335</td><td class="amount"><i class="icn icn-BTC"></i>0.02000000</td></tr></tr>
+                                                </tbody>
+                                                </table>
+                                            
+                                </div>
+
+                                </div>
+
+                                </div>
+                                </div>
+
+
+
+
+
+
+
+                                </div>
+                                </div>
+
+
+                                <br><br>
+
+
+
+
+                                <div id="trade-active-orders" class="active-orders" style="display: block;">
+                                <div class="row">
+                                <div class="col-xs-12">
+                                <h3>Active Orders <button style="float: right;" id="cancel-all-orders-button" class="btn btn-red btn-mini"><i class="icn-remove icon-white"></i>Cancel All</button></h3>
+
+                                <div style="overflow-y: hidden; height: 233px; background: transparent;">
+                                <table id="orders" class="table table-bordered">
+                                <thead>
+                                <tr><th>Date</th>
+                                <th>Type</th>
+                                <th>Amount <span class="symbol1">BTC</span></th>
+                                <th><span class="symbol1">BTC</span> Remaining</th>
+                                <th>Price</th>
+                                <th class="symbol2">Currency</th>
+                                <th>Fee (%)</th>
+                                <th width="100">Cancel</th>
+                                </tr></thead>
+                                <tbody id="orders-tbody"></tbody>
+                                </table>
+                                <div id="orders-loading" style="display: none;"></div>
+                                </div>
+                                <br>
+                                </div>
+                                </div>
+                                </div>
+
+
+
+
+
+                                </div>
+
+
+
+
+
+
+                                <!-- end mockOrders-->
+
+
+                    
+
+                            
+
+
+
+                                <div id="theLoader" style="top:0px; position:fixed; left:0px; width:100%; height:100%; z-index:30; opacity:.9">
+
+                                <div class="loading">
+                                <div class="bullet"></div>
+                                <div class="bullet"></div>
+                                <div class="bullet"></div>
+                                <div class="bullet"></div>
+                                </div>
+
+                                </div>
+
+
+
+                                <script src="js/custom.js"></script>
+
+                                
+                            </div>
+                            <div class="card_panel" style="margin-top:10px;padding:20px;margin-bottom: 10px;">
                                 <div id="trade-active-orders" class="active-orders" style="display: block;">
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <h3>Watchlist &nbsp;&nbsp;
-                                                <input placeholder="AddSymbol" style="width: 40%;
-                                                border: 1px solid #636b6f;
-                                                border-radius: 5px;
-                                                font-size: 15px;
-                                                padding-left: 7px;
-                                                background-color: #475e6b !important;
-                                                color: white !important;">
-                                                <div id="watchlist_dot"></div>
-                                            </h3>
+                                            <h3>Mock Portfolio &nbsp;&nbsp;<span style="font-size:30px;" class="portfolioValue numberedVar"> $30.0501</span></h3>
         
                                             <div class="container" style="overflow-y: hidden; background: transparent;">
                                                 <table id="orders" class="table table-bordered">
                                                     <thead style="border-bottom: 2px solid #636b6f;">
                                                         <tr>
-                                                            <th class="table_cell1" style="text-align:left;width:30%;">Symbol</th>
-                                                            <th class="table_cell1" style="text-align:left;width:25%;">Last</th>
-                                                            <th class="table_cell1" style="">Change(%)</th>
+                                                            <th style="width:30%;">Portfolio Value</th>
+                                                            <th style="width:25%;" class="portfolioValue numberedVar">$30,0501</th>
+                                                            <th style="font-size: 11px;text-align:center;
+                                                            font-weight: normal;width:15%;">Chg % 1D</th>
+                                                            <th style="font-size: 11px;text-align:center;
+                                                            font-weight: normal;width:15%;">Chg % $7D</th>
+                                                            <th style="font-size: 11px;text-align:center;
+                                                            font-weight: normal;width:15%;">Total Gains</th>
                                                         </tr>
                                                     </thead>
-                                            
-                                                    <tbody id="orders-tbody">
+                                        
+                                                    <tbody id="orders-tbody" class="portfolioStats">
                                                         <tr style="font-weight: 600;color:white;">
-                                                            <td class="table_cell1" style="text-align:left;width:30%;">BTCUS</td>
-                                                            <td class="table_cell1" style="text-align:left;width:25%;">8234.34</td>
+                                                            <td style="width:30%;">Fiat</td>
+                                                            <td style="width:25%;" class="fiatAmount numberedVar">$10,501</td>
                                                             <td style="font-size: 11px;text-align:center;
-                                                            font-weight: normal;width:15%;color:#15a661;">1.23%</td>
-                                                        </tr>
-                                                        <tr style="font-weight: 600;color:white;">
-                                                            <td class="table_cell1" style="text-align:left;width:30%;">FXE</td>
-                                                            <td class="table_cell1" style="text-align:left;width:25%;">113.56</td>
+                                                            font-weight: normal;width:15%;color:#15a661;">0%</td>
                                                             <td style="font-size: 11px;text-align:center;
-                                                            font-weight: normal;width:15%;color:#ab454b;">-0.23%</td>
+                                                            font-weight: normal;width:15%;color:#15a661;">0%</td>
+                                                            <td style="font-size: 11px;text-align:center;
+                                                            font-weight: normal;width:15%;color:#15a661;" >0%</td>
                                                         </tr>
+                                                        <tr style="font-weight: 600;color:white;border-bottom: 2px solid #636b6f;">
+                                                            <td style="width:30%;">Assets</td>
+                                                            <td style="width:25%;" class="assetsAmount numberedVar">$20,000</td>
+                                                            <td style="font-size: 11px;text-align:center;
+                                                            font-weight: normal;width:15%;color:#15a661;">--</td>
+                                                            <td style="font-size: 11px;text-align:center;
+                                                            font-weight: normal;width:15%;color:#15a661;">--</td>
+                                                            <td style="font-size: 11px;text-align:center;
+                                                            font-weight: normal;width:15%;color:#15a661;" class="assetsChange">0%</td>
+                                                        </tr>
+                                                    
                                                     </tbody>
                                                 </table>
                                                 <div id="orders-loading" style="display: none;"></div>
@@ -846,47 +1016,565 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card_panel" style="color: #fff;padding:20px;margin-top:10px;" >
-                                <h3 style="font-weight: lighter;
-                                ">Ethereum/Dollar<br>480.43<span style="font-size: 13px;text-align:center;
-                                font-weight: normal;width:15%;color:#15a661;">&nbsp;(5.23%)</span></h3>
-                                <div id="chartdiv" style="color: #fff;margin-top:10px;"></div>
-                            </div>
-                            
-                            <div id="blog_panel" class="card_panel" style="color: #fff;padding:20px;margin-top:10px;">
+                        </div>
+                        <div class="col-md-4">
+                            <div >
+                                <div id="watchlist" class="card_panel" style="color: #fff;padding:20px;">
                                     <div id="trade-active-orders" class="active-orders" style="display: block;">
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <h4 style="font-weight: lighter;
-                                                ">Latest on ETHUSD
+
+
+                                    <div class="row">
+                                        <div class="col-xs-12">
+
+                                                <ul class="nav nav-tabs">
+                                                    <li role="presentation" class="">
+                                                        <a href="#profile4" role="tab" data-toggle="tab" aria-expanded="false">Index</a>
+                                                    </li>
+                                                    <li role="presentation" class="active">
+                                                        <a href="#profile1" role="tab" data-toggle="tab" aria-expanded="true">Crypto</a>
+                                                    </li>
+
+                                                    <li role="presentation" class="">
+                                                        <a href="#profile2" role="tab" data-toggle="tab" aria-expanded="false">CMDTY</a>
+                                                    </li>
+                                                    <li role="presentation" class="">
+                                                        <a href="#profile3" role="tab" data-toggle="tab" aria-expanded="false">Equity</a>
+                                                    </li>
+
+                                                
+                                                </ul>
+                                                <div class="tab-content  " >
+
+
+
+                                                <div role="tabpanel" class="tab-pane fade in watchListSubDiv nicescroll" id="profile4">
+
+
+                                                    <table class="table table-striped m-0 " id="indexTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Index</th>
+                                                
+                                                    <th>Price</th>
+                                                    <th>24h Change</th>
+                                                    <th>Signal</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            
+                                            </tbody>
+                                        </table>
+
+                                                    </div>
+
                                                     
-                                                </h4>
-            
-                                                <div class="" style="overflow-y: hidden; background: transparent;border-bottom: 2px solid #636b6f;">
-                                                    <h4 style="font-weight: lighter;">Ethereum Price Races to All-Time High; Is $500 in Sight?</h4>
-                                                    <h5 style="color: grey;">Lorem ipsum dolor sit amet. consectetur adipiscing edit, sed do eiusmod tempor incididunt ut labore et dolore
-                                                        mgna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                                    </h5>
-                                                    <h5 style="color: lightgrey;">at Yahoo Finance<span style="float:right;">11 hours ago</span></h5>
+                                                    <div role="tabpanel" class="tab-pane fade active in watchListSubDiv nicescroll" id="profile1">
+
+
+                                                    <table class="table table-striped m-0 " id="currencyTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Rank</th>
+                                                    <th>Symbol</th>
+                                                    <th>Price</th>
+                                                    <th>24h Change</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            
+                                            </tbody>
+                                        </table>
+
+                                                    </div>
+
+
+
+                                                    <div role="tabpanel" class="tab-pane fade in watchListSubDiv nicescroll" id="profile2">
+
+
+                                                    <table class="table table-striped m-0 " id="commodityTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Commodity</th>
+                                                
+                                                    <th>Price</th>
+                                                    <th>24h Change</th>
+                                                    <th>Signal</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            
+                                            </tbody>
+                                        </table>
+
+                                                    </div>
+
+
+                                                    <div role="tabpanel" class="tab-pane fade in watchListSubDiv nicescroll" id="profile3">
+
+
+                                                    <table class="table table-striped m-0 " id="stockTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Stock</th>
+                                                
+                                                    <th>Price</th>
+                                                    <th>24h Change</th>
+                                                    <th>Signal</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            
+                                            </tbody>
+                                        </table>
+
+                                                    </div>
+
+
+                                                    
+
+
+
+
+
+
+
+
+
+
+
+                                                
+
+
+                                                    
+                                                
                                                 </div>
-                                                <div class="" style="overflow-y: hidden; background: transparent;border-bottom: 2px solid #636b6f;">
-                                                    <h4 style="font-weight: lighter;">Ethereum Continues Improvements Amid Bitcoin Bickering</h4>
-                                                    <h5 style="color: grey;">Lorem ipsum dolor sit amet. consectetur adipiscing edit, sed do eiusmod tempor incididunt ut labore et dolore
-                                                        mgna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                                    </h5>
-                                                    <h5 style="color: lightgrey;">at Yahoo Finance<span style="float:right;">11 hours ago</span></h5>
+                                            </div><!-- end col -->
+
+
+                                        
+
+                                        </div>
+
+
+
+                                        <!--<div class="row">
+                                            <div class="col-xs-12">
+                                                <h3>Watchlist &nbsp;&nbsp;
+                                                    <input placeholder="Add Symbol" style="width: 40%;
+                                                    border: 1px solid #636b6f;
+                                                    border-radius: 5px;
+                                                    font-size: 15px;
+                                                    padding-left: 7px;
+                                                    background-color: #475e6b !important;
+                                                    color: white !important;">
+                                                    <div id="watchlist_dot" style="display:none"></div>
+                                                </h3>
+            
+                                                <div class="container" style="overflow-y: hidden; background: transparent;">
+                                                    <table id="orders" class="table table-bordered">
+                                                        <thead style="border-bottom: 2px solid #636b6f;">
+                                                            <tr>
+                                                                <th class="table_cell1" style="text-align:left;width:30%;">Symbol</th>
+                                                                <th class="table_cell1" style="text-align:left;width:25%;">Last</th>
+                                                                <th class="table_cell1" style="">Change(%)</th>
+                                                            </tr>
+                                                        </thead>
+                                                
+                                                        <tbody id="orders-tbody">
+                                                            <tr style="font-weight: 600;color:white;">
+                                                                <td class="table_cell1" style="text-align:left;width:30%;">BTCUS</td>
+                                                                <td class="table_cell1" style="text-align:left;width:25%;">8234.34</td>
+                                                                <td style="font-size: 11px;text-align:center;
+                                                                font-weight: normal;width:15%;color:#15a661;">1.23%</td>
+                                                            </tr>
+                                                            <tr style="font-weight: 600;color:white;">
+                                                                <td class="table_cell1" style="text-align:left;width:30%;">FXE</td>
+                                                                <td class="table_cell1" style="text-align:left;width:25%;">113.56</td>
+                                                                <td style="font-size: 11px;text-align:center;
+                                                                font-weight: normal;width:15%;color:#ab454b;">-0.23%</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div id="orders-loading" style="display: none;"></div>
                                                 </div>
                                                 <br>
                                             </div>
+                                        </div>-->
+                                    </div>
+                                </div>
+                                <div class="card_panel" style="color: #fff;padding:20px;margin-top:10px;" >
+                                    <h3 style="font-weight: lighter;
+                                    "><span id="tickerCurrency">Ethereum</span>/Dollar<br><span id="tickerPrice">480.43</span><span style="font-size: 13px;text-align:center; display:none;
+                                    font-weight: normal;width:15%;color:#15a661;">&nbsp;<br>1 hour change: <span id="tickerChange">5.23%</span></span></h3>
+                                    <div id="chartdiv" style="color: #fff;margin-top:10px;"></div>
+                                </div>
+                                
+                                <div id="blog_panel" class="card_panel" style="color: #fff;padding:20px;margin-top:10px;">
+                                        <div id="trade-active-orders" class="active-orders" style="display: block;">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <h4 style="font-weight: lighter;
+                                                    " id="latestTitle">Latest on ETHUSD
+                                                        
+                                                    </h4>
+                    <div id="newsStories" class="nicescroll">
+                                                    <div class="" style="overflow-y: hidden; background: transparent;border-bottom: 2px solid #636b6f;">
+                                                        <h4 style="font-weight: lighter;">µRaiden has now officially been deployed on the Ethereum main net! </h4>
+                                                        <h5 style="color: grey;">Raiden – Designed by previous Ethereum Core developer Heiko Hees, Raiden will significantly speed up the Ethereum network by giving the mainnet the ability to take transactions off-chain—a dynamic that’ll allow for private, nearly instantaneous micro-transactions.
+                                                        </h5>
+                                                        <h5 style="color: lightgrey;">Reddit - r/ethereum<span style="float:right;">5 mins ago</span></h5>
+                                                    </div>
+                                                    <div class="" style="overflow-y: hidden; background: transparent;border-bottom: 2px solid #636b6f;">
+                                                        <h4 style="font-weight: lighter;">Ethereum Price Technical Analysis – ETH/USD Facing Crucial Test</h4>
+                                                        <h5 style="color: grey;">Ethereum price is correcting higher against the US Dollar and Bitcoin. ETH/USD has to move above $430 and $458 to overcome the current pressure.
+                                                        </h5>
+                                                        <h5 style="color: lightgrey;">at NewBTC<span style="float:right;">20 mins ago</span></h5>
+                                                    </div>
+                                                </div>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <footer class="footer text-right">
+                        2018 © x²
+                        </footer>
+                    </div>
+                </div>
+                <div id="mail_page"  class="main_subpanel" style="display:none;">
+                        <script src="js/jquery-2.1.4.min.js"></script>
+                        <script src="js/highstock.js"></script>
+                        <script src="js/modules/drag-panes.js"></script>
+                        <script src="js/modules/exporting.js"></script>
+    
+    
+                        <script src="js/amcharts.js"></script>
+                        <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+                        <script src="https://www.amcharts.com/lib/3/plugins/dataloader/dataloader.min.js"></script>
+                        <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+                        <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+                        <link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
+                        <link rel="stylesheet" href="css/chat.scss" type="text/css" media="all" />
+                        <!--<script src="https://www.amcharts.com/lib/3/themes/none.js"></script>-->
+                        <script src="https://www.amcharts.com/lib/3/themes/dark.js"></script>
+    
+                        <script src="js/bootstrap.js"></script>
+                        <script src="js/lity.js"></script>
+                        <!-- <link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all" /> -->
+                        <link rel="stylesheet" href="css/lity.css" type="text/css" media="all" />
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                        
+                        
+                        <div id="signupForm" style="height:auto; padding:50px; background-color:#253138; font-size:23px; text-align:center; color:white; " class="lity-hide lightboxes col-md-4">
+    
+                        Register
+                            <br><br>
+    
+                            <input type="text" id="signupEmail" placeholder="E-mail" style="border-width: 0px;
+                            background: #475e6b !important;
+                            border: 1px solid #2f3e47;
+                            padding: 10px;
+                            border-radius: 5px;
+                            font-size: 14px;    width: 100%;
+                            ">
+                            <br>
+                            <input type="text" id="signupname" placeholder="Username" style="border-width: 0px;
+                            background: #475e6b !important;
+                            border: 1px solid #2f3e47;
+                            padding: 10px;
+                            border-radius: 5px;
+                            font-size: 14px;    width: 100%;
+                            ">
+                            <br>
+                            <input type="password" id="signupPw" style="border-width: 0px;
+                            background: #475e6b !important;
+                            border: 1px solid #2f3e47;
+                            padding: 10px;
+                            border-radius: 5px;
+                            font-size: 14px;    width: 100%;
+                            "placeholder="Password">
+                            <br>
+                            <div class="" style="font-size: 14px;text-align: left;">
+                                <label for="checkbox1" style="font-size:13px;font-weight:normal;">
+                                    <input type="checkbox" id="checkbox1" name="checkbox1" value="option1" style="min-width:0px;"> I accept <span style="color: #5586b5;">Terms and Conditions</span>
+                                </label>
+                            </div>
+                            <button type="button" onclick="register()" class="btn btn-block" style="background-color: #5a8fc2;border: 1px solid #5a8fc2;">Sign Up</button>
+                            <br>
+                            <h6>or sign up with</h6>
+                            <div class="card-footer p-4">
+                                <div class="row">
+                                    <div class="col-sm-6" style="border-right: 1px solid white;">
+                                        <div>
+                                            <i class="fa fa-facebook-square" style="font-size:30px;color:white"></i>
+                                        </div>
+                                        <h6>Facebook</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div>
+                                            <i class="fa fa-linkedin-square" style="font-size:30px;color:white"></i>
+                                        </div>
+                                        <h6>LinkedIn</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <h6>All ready have an account? <span style="color: #5586b5;">Log In</span></h6>
+                        </div>
+    
+    
+    
+    
+                        <div id="loginForm" style="height:auto; padding:50px;background-color:#253138; font-size:23px; text-align:center; color:white; " class="lity-hide lightboxes">
+    
+                        Log In
+                            <br><br>
+                            <div class="card-footer p-4">
+                                    <div class="row">
+                                        <div class="col-sm-6" style="border-right: 1px solid white;">
+                                            <div>
+                                                <i class="fa fa-facebook-square" style="font-size:30px;color:white"></i>
+                                            </div>
+                                            <h6>Facebook</h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div>
+                                                <i class="fa fa-linkedin-square" style="font-size:30px;color:white"></i>
+                                            </div>
+                                            <h6>LinkedIn</h6>
                                         </div>
                                     </div>
                                 </div>
+    
+                            <input type="text" id="loginEmail" placeholder="Username" style="border-width: 0px;
+                            background: #475e6b !important;
+                            border: 1px solid #2f3e47;
+                            padding: 10px;
+                            border-radius: 5px;
+                            font-size: 14px;    width: 100%;
+                            ">
+                            <br>
+    
+                            <input type="password" id="singupPw" placeholder="Password" style="border-width: 0px;
+                            background: #475e6b !important;
+                            border: 1px solid #2f3e47;
+                            padding: 10px;
+                            border-radius: 5px;
+                            font-size: 14px;    width: 100%;
+                            ">
+                            <div class="" style="font-size: 14px;text-align: left;">
+                                <label for="checkbox2" style="font-size:13px;font-weight:normal;">
+                                    <input type="checkbox" id="checkbox1" name="checkbox2" value="option1" style="min-width:0px;"> Remember me 
+                                </label>
+                                <a href="" style="font-size:13px;margin-top:8px;float:right;color: #cf4d4f;">Forgot Password?</a>
+                            </div>
+                            <br>
+                            <button type="button" onclick="login()" class="btn btn-block" style="background-color: #5a8fc2;border: 1px solid #5a8fc2;">Log In</button>
+                            <h6>Don't have an account? <span style="color: #5586b5;">Sign Up</span></h6>
+                        </div>
+    
+                        <div id="chatForm" style="" class="lity-hide lightboxes">
+    
+                            <div class="chat_container clearfix">
+                                <div class="chat col-sm-7" style="">
+                                <div class="chat-header clearfix">
+                                    
+                                    <div class="chat-about">
+                                    <div class="chat-with">People chatting about ETH</div>
+                                    </div>
+                                    <div class="three_dot"></div>
+                                </div> <!-- end chat-header -->
+                                
+                                <div class="chat-history ">
+                                    <ul style="list-style:none;padding: 10px;">
+                                    <li>
+                                        <div>
+                                            <img class="col-sm-2" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_10.jpg" style="border-radius: 100px;padding-left:0px;padding-right:0px;" alt="avatar" />
+                                            <div class="message-data col-sm-9 col-md-offset-1">
+                                            <div class="message-data-name">Donald</div>
+                                            <div class="message-data-time">10:12 AM, Today</divs>
+                                            <div class="" style="padding-top:5px;">
+                                                Are we meeting today? Project has been already finished and I have results to show you.
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                    </li>
+                                    <li>
+                                            <div>
+                                                <img class="col-sm-2" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_03.jpg" style="border-radius: 100px;padding-left:0px;padding-right:0px;" alt="avatar" />
+                                                <div class="message-data col-sm-9 col-md-offset-1">
+                                                <div class="message-data-name">Sarah</div>
+                                                <div class="message-data-time">10:15 AM, Today</divs>
+                                                <div class="" style="padding-top:5px;">
+                                                        Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div style="clear:both;"></div>
+                                        </li>
+                                    <li>
+                                        <div class="message-data">
+                                        <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+                                        <span class="message-data-time">10:31 AM, Today</span>
+                                        </div>
+                                        <i class="fa fa-circle online"></i>
+                                        <i class="fa fa-circle online" style="color: #AED2A6"></i>
+                                        <i class="fa fa-circle online" style="color:#DAE9DA"></i>
+                                    </li>
+                                    
+                                    </ul>
+                                    
+                                </div> <!-- end chat-history -->
+                                
+                                <div class="input-prepend input-group" style="padding:10px 20px;margin:auto;display:flex;">
+                                    <div style="border: 1px solid #c2cfd6;display:flex;border-right: none;">
+                                        <span class="input-group-addon" style="align-self: center;padding-left: 16px; padding-right:16px;">+</span>
+                                    </div>
+                                        <input id="prependedInput" class="form-control" size="16" type="text">
+                                        <button style="color:#7ebdfa;border: 1px solid #c2cfd6;border-left: none;font-size: 13px;padding: 8px;border-radius: 0px 3px 3px 0px;">Send</button>
+                                </div>
+                            
+                                <!-- end chat-message -->
+                                
+                                </div> <!-- end chat -->
+                                <div class="chat_people-list col-sm-5" id="chat_people-list">
+                                    <!-- <div class="chat_search">
+                                    <input type="text" placeholder="search" />
+                                    <i class="fa fa-search"></i>
+                                    </div> -->
+                                    <ul class="list" style="">
+                                        Most Active
+                                        <li class="clearfix">
+                                            <div class="about">
+                                                <div class="name">
+                                                    <i class="fa fa-circle online"></i> Donald
+                                                </div>
+                                            </div>
+                                        </li>
+                                        
+                                        <li class="clearfix">
+                                            <div class="about">
+                                                <div class="name">
+                                                    <i class="fa fa-circle offline"></i> Sarah
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <ul class="list" style="margin-top:30px;">
+                                        Users
+                                        <li class="clearfix">
+                                            <div class="about">
+                                                <div class="name">
+                                                    <i class="fa fa-circle online"></i> Kirill
+                                                </div>
+                                            </div>
+                                        </li>
+                                        
+                                        <li class="clearfix">
+                                            <div class="about">
+                                                <div class="name">
+                                                    <i class="fa fa-circle offline"></i> John
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="about">
+                                                <div class="name">
+                                                    <i class="fa fa-circle online"></i> Donald
+                                                </div>
+                                            </div>
+                                        </li>
+                                        
+                                        <li class="clearfix">
+                                            <div class="about">
+                                                <div class="name">
+                                                    <i class="fa fa-circle away"></i> Liza
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div> <!-- end container -->
+                        </div>
+    
+                        <div id="main_panel" class="container" style="
+                        margin-top: 20px;">
+                            <div style="margin-top:85px;padding-left: 40px;font-size: 25px;">
+                                Mail
+                            </div>
+                            <div class=" col-md-3" style="">
+                                <div>
+                                    <div style="padding:20px;background: none;padding-top: 0px;" class="card_panel">
+                                        <button type="button" class="btn compose_btn">COMPOSE</button>
+                                        <ul id="navbarMain" class="nav nav-gray nav-active-teal flex-column tx-uppercase tx-semibold tx-poppins tx-size-14" style="margin-top: 25px;font-size: 15px;">
+                                            <li class="nav-item"><a href="#" class="nav-link active">Inbox(23)</a></li>
+                                            <li class="nav-item"><a href="#" class="nav-link">Important</a></li>
+                                            <li class="nav-item"><a href="#" class="nav-link">Sent</a></li>
+                                            <li class="nav-item"><a href="#" class="nav-link">Drafts</a></li>
+                                            <li class="nav-item"><a href="#" class="nav-link">Trash</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-9">
+                                <div >
+                                    <div id="watchlist" class="card_panel" style="color: #fff;">
+                                        <div id="trade-active-orders" class="active-orders" style="display: block;padding:10px 20px;border-bottom: 1px solid #979ea3;">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="container" style="">
+                                                        <div style="width:300px;display: flex;">
+                                                            <i style="font-size: 44px;color: #b14a4d;"class="fa fa-times-circle-o"></i>
+                                                            <form role="search" class="app-search search_form" action="javascript:searchEnter()">
+                                                                <input type="text" style="margin-top:0px;" placeholder="Search" class="form-control" onkeyup="getSuggestedSearch()" id="searchInput" autocomplete="off">
+                                                                <a href=""><i class="fa fa-search" style= "vertical-align: middle;"></i></a>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="trade-active-orders" class="active-orders" style="display: block;padding:10px 20px;">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="container" style="color:#cdcece">
+                                                        <div style="display: flex;">
+                                                            <i style="font-size: 44px;"class="fa fa-circle-o"></i>
+                                                            <span style="align-self: center;margin-left:20px;">Lucas Kriebel (via Twitter)</span>
+                                                            <span style="align-self: center;margin-left:50px;">Lucas Kriebel has sent you direct message...</span>
+                                                        </div>
+                                                        <div style="display: flex;margin-top: 10px;">
+                                                            <i style="font-size: 44px;"class="fa fa-circle-o"></i>
+                                                            <span style="align-self: center;margin-left:20px;">Lucas Kriebel (via Twitter)</span>
+                                                            <span style="align-self: center;margin-left:50px;">Lucas Kriebel has sent you direct message...</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+                            <footer class="footer text-right">
+                            2018 © x²
+                            </footer>
                         </div>
                     </div>
-                    <footer class="footer text-right">
-                        2017 - 2018 © Carlos.
-                    </footer>
-                </div>
             </div>
 
 
@@ -997,8 +1685,8 @@
         <script src="assets/plugins/jquery-knob/jquery.knob.js"></script>
 
         <!--Morris Chart-->
-		<script src="assets/plugins/morris/morris.min.js"></script>
-		<script src="assets/plugins/raphael/raphael-min.js"></script>
+        <script src="assets/plugins/morris/morris.min.js"></script>
+        <script src="assets/plugins/raphael/raphael-min.js"></script>
 
         <!-- Dashboard init -->
         <script src="assets/pages/jquery.dashboard.js"></script>
@@ -1006,6 +1694,6 @@
         <!-- App js -->
         <script src="assets/js/jquery.core.js"></script>
         <script src="assets/js/jquery.app.js"></script>
-
+        <script src="js/uicontrol.js"></script>
     </body>
 </html>
